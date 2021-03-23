@@ -1,12 +1,14 @@
 import sys
 import hashlib
 import requests
+from rich.console import Console
 
 API_URL = "https://haveibeenpwned.com/API/v3#SearchingPwnedPasswordsByRange"
 
+console = Console()
 
 def request_api_response(hashed_password):
-    password_hash_url = 'https://api.pwnedpasswords.com/range/' + hashed_password
+    password_hash_url = "https://api.pwnedpasswords.com/range/" + hashed_password
     api_response = requests.get(password_hash_url)
     if api_response.status_code != 200:
         raise RuntimeError(f"Please, check the password format in {API_URL}") 
@@ -29,8 +31,9 @@ def password_checker(password):
 def main():
     number_leaks = password_checker(sys.argv[1])
     if number_leaks > 0:
-        print(f"Wow! This password has been leaked {number_leaks} times. Try to change it now.")
+        console.print(f"Wow! This password has been leaked [bold underline red]{number_leaks}[/bold underline red] times.Try to change it now.",
+                       style = "red on white")
     else:
-        print("This password is safe for now. Zero leaks found.")
+        console.print("This password is safe for now.[bold underline green]Zero[/bold underline green] leaks found.",style = "green")
 
 main()
