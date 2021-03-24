@@ -2,10 +2,24 @@ import sys
 import hashlib
 import requests
 from rich.console import Console
+from rich.theme import Theme 
+
+################ Program Parameters ##############################################
 
 API_URL = "https://haveibeenpwned.com/API/v3#SearchingPwnedPasswordsByRange"
 
-console = Console()
+###################################################################################
+
+################### Rich Terminal Settings #######################################
+
+custom_theme = Theme({
+        "bad password": "red on white",
+        "good password": "green",
+})
+
+console = Console(theme = custom_theme)
+
+#####################################################################################
 
 def request_api_response(hashed_password):
     password_hash_url = "https://api.pwnedpasswords.com/range/" + hashed_password
@@ -31,9 +45,11 @@ def password_checker(password):
 def main():
     number_leaks = password_checker(sys.argv[1])
     if number_leaks > 0:
-        console.print(f"Wow! This password has been leaked [bold underline red]{number_leaks}[/bold underline red] times.Try to change it now.",
-                       style = "red on white")
+        console.print(f"Wow! This password has been leaked {number_leaks} times. Try to change it now.",
+                       style = "bad password")
     else:
-        console.print("This password is safe for now.[bold underline green]Zero[/bold underline green] leaks found.",style = "green")
+        console.print("This password is safe for now. Zero leaks found.",style = "good password")
 
-main()
+
+if __name__ == "__main__":
+    main()
