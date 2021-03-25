@@ -3,7 +3,11 @@
 
 # Password Security Checker
 
-This project allows you to verify the security of your passwords. 
+This project allows you to verify the security of your passwords.
+It is done via this [API](https://haveibeenpwned.com/API/v3#SearchingPwnedPasswordsByRange), which allows
+the use of the first 5 characters of the password hash. 
+
+Summarizing, the password never leaves the local machine. 
 
 ## Command Line Interface 
 
