@@ -13,11 +13,13 @@ Summarizing, the password never leaves the local machine.
 
 ## Command Line Interface 
 
+### Installation
+
 To start using the application,please install it by using the command below.
 
 ``` make install ```
 
-One code example of how to run the CLI.
+### Usage
 
 ``` python3 password_security.py 'my_password' ```
 
