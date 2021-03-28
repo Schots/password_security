@@ -3,7 +3,7 @@ install:
 		pip install -r requirements.txt
 
 test:
-	python -m pytest -vv password_security.py
+	python -m pytest -vv test_password_security.py
 
 format:
 	black *.py
