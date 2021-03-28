@@ -1,4 +1,6 @@
 
+[![Continuous Integration on Git Push](https://github.com/Schots/password_security/actions/workflows/main.yml/badge.svg)](https://github.com/Schots/password_security/actions/workflows/main.yml)
+
 [![image](https://user-images.githubusercontent.com/8209798/112394472-86123a00-8cdb-11eb-9cf5-6e539255b3f5.png)](https://haveibeenpwned.com/)
 
 # Password Security Checker
