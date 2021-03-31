@@ -33,16 +33,7 @@ table.add_column("Diagnostic")
 
 def request_api_response(hashed_password):
     password_hash_url = "https://api.pwnedpasswords.com/range/" + hashed_password
-    api_response = requests.get(password_hash_url)
-    if api_response.status_code != 200:
-        raise RuntimeError(f"Please, check the password format in {API_URL}")
-    else:
-        return api_response
-
-
-def get_pwnd_count(api_hashes_response, password_hash):
-    hash_split = (hashes.split(":") for hashes in api_hashes_response.text.splitlines())
-    for h, count in hash_split:
+    api_resp
         if h == password_hash:
             return int(count)
     return 0
@@ -54,17 +45,19 @@ def password_checker(password):
     response = request_api_response(password_begin)
     return get_pwnd_count(response, password_end)
 
-
-def main(passwords_to_check):
-    for password in passwords_to_check:
-        number_leaks = password_checker(password)
-        if number_leaks:
-            table.add_row(password, str(number_leaks), "Insecure", style="bad password")
-        else:
-            table.add_row(password, str(number_leaks), "Secure", style="good password")
-
-    console.print(table)
-
+ of Week Name').count()\n",
+    "conver_day = conver_day.reset_index()\n",
+    "\n",
+    "Transaction_ID_agrup = conver_day['Transaction ID']\n",
+    "\n",
+    "Day_of_Week_Name_agrup = conver_day['Day of Week Name']\n",
+    "\n",
+    "\n",
+    "plt.bar(Day_of_Week_Name_agrup, Transaction_ID_agrup )\n",
+    "plt.xlabel('Days')\n",
+    "plt.ylabel('Total de conversões')\n",
+    "plt.title('Distribuição das conversões por dias na semana')\n",
+    "plt.savefig('conversõespordiasemana.png')"
 
 if __name__ == "__main__":
     main(sys.argv[1:])
