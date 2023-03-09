@@ -25,4 +25,6 @@ To start using the application,please install it by using the command below.
 
 ``` python3 password_security.py 'my_password' ```
 
+### Usage Streamlit
 
+```streamlit run verificador_de_senhas.py ```
